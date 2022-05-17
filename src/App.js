@@ -16,7 +16,7 @@ function App() {
 
     getTasks()
   }, [])
-
+  // https://my-json-server.typicode.com/jeffdnganga/react-todo-app/tasks
   // Fetch Tasks
   const fetchTasks = async () => {
     const res = await fetch('http://localhost:5000/tasks')
@@ -56,10 +56,25 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  // Update Task
+  const updateTask = async (id, task) => {
+    const res = await fetch('http://localhost:5000/tasks',{
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(task),
+    })
+
+    const data = await res.json()
+
+    setTasks(tasks.map((task) => task.id === id ? updateTask : task))
+  }
+
   // Toggle reminder
   const toggleReminder = async (id) => {
-    const taskToToggle = await fetchTask(id)
-    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder}
+    const taskToComplete = await fetchTask(id)
+    const updTask = { ...taskToComplete, reminder: !taskToComplete.reminder}
 
     const res = await fetch(`http://localhost:5000/tasks/${id}`, {method:'PUT', headers: {'Content-type': 'application/json'}, body: JSON.stringify(updTask)})
 
@@ -72,7 +87,7 @@ function App() {
     <div className="container">
       <Header onAdd={() => setShowAddTask(!showAddTask)}  showAdd={showAddTask}/>
       {showAddTask && <AddTask onAdd={addTask}/>}
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks to show.'}
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} updateTask/> : 'No Tasks to show.'}
 
     </div>
   );

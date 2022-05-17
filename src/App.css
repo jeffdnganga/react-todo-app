@@ -7,15 +7,15 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif!important;
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px!important;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 128, 0.336);  
   padding: 30px;
   border-radius: 5px;
 }
@@ -27,9 +27,9 @@ body {
   margin-bottom: 20px;
 }
 
-.btn {
+.save-btn {
   display: inline-block;
-  background: #000;
+  background: navy;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -41,28 +41,26 @@ body {
   font-family: inherit;
 }
 
-.btn:focus {
-  outline: none;
-}
-
-.btn:active {
+.save-btn:hover {
   transform: scale(0.98);
+  transition: 0.5s;
 }
 
 .btn-block {
   display: block;
-  width: 100%;
+  width: 98%;
 }
 
 .task {
-  background: #f4f4f4;
+  background: #eeeeee;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
 }
 
 .task.reminder {
-  border-left: 5px solid green;
+  text-decoration: line-through;
+  color: grey;
 }
 
 .task h3 {
@@ -71,12 +69,13 @@ body {
   justify-content: space-between;
 }
 
-.add-form {
-  margin-bottom: 40px;
+.task-icon:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
 }
 
-.form-control {
-  margin: 20px 0;
+.add-form {
+  margin-bottom: 40px;
 }
 
 .form-control label {

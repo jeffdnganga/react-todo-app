@@ -1,10 +1,19 @@
 {
   "tasks": [
     {
-      "text": "Finish up on first project",
-      "day": "Friday at 10pm",
-      "reminder": true,
+      "text": "Go for shopping",
+      "reminder": false,
       "id": 1
+    },
+    {
+      "text": "Finish assignment",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "Go for haircut",
+      "reminder": false,
+      "id": 3
     }
   ]
 }
