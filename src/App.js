@@ -16,10 +16,10 @@ function App() {
 
     getTasks()
   }, [])
-  // https://my-json-server.typicode.com/jeffdnganga/react-todo-app/tasks
+  
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+    const res = await fetch('https://my-json-server.typicode.com/jeffdnganga/json-api/tasks')
     const data = await res.json()
 
     return data
